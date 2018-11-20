@@ -1,3 +1,8 @@
 ############################################################################
 #Ce repo contient le projet complexité du binome ZEMMOURI Rediane et DIB Thinhinane de la specialité IL master 1 chez Madame Hedjazi#
 ############################################################################
+
+Structure : 
+tri a bulles : dossier contenant les fichiers de la question sur les tris a bulles
+Le fichier triABUlles.h contient les prototypes des fonctions + la definition d'un type booléen
+Si vous souhaitez afficher le tableau a un certain moment, J'ai prévu une fonction afficher qui le fait pour vous, vous n'aurez qu'a l'utiliser la ou vous voullez..

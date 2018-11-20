@@ -8,6 +8,8 @@ int main(){
 	int *T;
 	int n[13];
 	int i;
+	double delta;
+	clock_t t1, t2;
 	srand(time(0)); //random number generator seeding
 	n[0] = 50000;
 	n[1] = 100000;
@@ -25,30 +27,31 @@ int main(){
 
 	for(i =0; i<13; i++){
 		printf("----------------------------------------------------------------------\n");
-		printf("pour N = %d\n");
+		printf("pour N = %d\n", n[i]);
 		printf("-----------------------------------------------------------------------\n");
-		printf("appuyer sur une touche pour continuer\n");
-		printf("les valeurs du tableau, au meilleur des cas,  sont : \n");
 		// Le meilleur des cas consiste en un tableau deja triéé
+		printf("remplissage du tableau au meilleur des cas...\n");
 		remplirTableauMeilleurDesCas(&T, n[i]);
-		afficher(T, n[i]);
 		printf("tri a bulles en cours...\n");
+		t1 = clock();
 		triABulles(T, n[i]);
+		t2 = clock();
+		delta = (double)(t2-t1)/CLOCKS_PER_SEC;
+		printf("le tableau, dans le meilleure des cas de la taille %d, a ete rempli en %f secondes :\n", n[i], delta);
 
-		printf("le tableau trié :\n");
-		afficher(T, n[i]);
-
+		printf("******************************************\n");
 		// Le pire des cas consiste en un tableau triée par ordre decroissant
-		printf("les valeurs du tableau, au pire des cas,  sont : \n");
+		printf("remplissage du tableau au pire des cas... \n");
 		remplirTableauPireDesCas(&T, n[i]);
-		afficher(T, n[i]);
 		printf("tri a bulles en cours...\n");
 		triABulles(T, n[i]);
+				t1 = clock();
+		triABulles(T, n[i]);
+		t2 = clock();
+		delta = (double)(t2-t1)/CLOCKS_PER_SEC;
+		printf("le tableau, dans le pire des cas de la taille %d, a ete rempli en %f secondes :\n", n[i], delta);
 
-		printf("le tableau trié :\n");
-		afficher(T, n[i]);
-
-		printf("Veuillez appuyer sur une touche pour continuer...");
+		printf("appuyez sur entree pr continuer\n");
 		fflush(stdin);
 		getchar();
 	}
