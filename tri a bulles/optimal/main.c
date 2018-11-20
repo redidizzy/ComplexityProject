@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <unistd.h>
 #include "../triABulles.h"
 
 int main(){
@@ -91,15 +90,17 @@ void permutter(int *val1, int *val2){
 	*val2 = x;
 }
 void triABulles(int *array, int n){
+	int m = n-1;
 	bool changement = true;
 	int i;
 	while(changement == true){
 		changement = false;
-		for(i = 0; i<n-1; i++){
+		for(i = 0; i<m; i++){
 			if(array[i] > array[i+1]){
 				permutter(&array[i], &array[i+1]);
 				changement = true;
 			}
 		}
+		m--;
 	}
 }
