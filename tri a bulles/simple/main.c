@@ -44,8 +44,7 @@ int main(){
 		printf("remplissage du tableau au pire des cas... \n");
 		remplirTableauPireDesCas(&T, n[i]);
 		printf("tri a bulles en cours...\n");
-		triABulles(T, n[i]);
-				t1 = clock();
+		t1 = clock();
 		triABulles(T, n[i]);
 		t2 = clock();
 		delta = (double)(t2-t1)/CLOCKS_PER_SEC;
