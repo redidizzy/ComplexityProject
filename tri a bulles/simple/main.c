@@ -37,7 +37,7 @@ int main(){
 		triABulles(T, n[i]);
 		t2 = clock();
 		delta = (double)(t2-t1)/CLOCKS_PER_SEC;
-		printf("le tableau, dans le meilleure des cas de la taille %d, a ete rempli en %f secondes :\n", n[i], delta);
+		printf("le tableau, dans le meilleure des cas de la taille %d, a ete trié en %f secondes :\n", n[i], delta);
 
 		printf("******************************************\n");
 		// Le pire des cas consiste en un tableau triée par ordre decroissant
@@ -48,7 +48,7 @@ int main(){
 		triABulles(T, n[i]);
 		t2 = clock();
 		delta = (double)(t2-t1)/CLOCKS_PER_SEC;
-		printf("le tableau, dans le pire des cas de la taille %d, a ete rempli en %f secondes :\n", n[i], delta);
+		printf("le tableau, dans le pire des cas de la taille %d, a ete trié en %f secondes :\n", n[i], delta);
 
 		printf("appuyez sur entree pr continuer\n");
 		fflush(stdin);

@@ -40,35 +40,12 @@ int main(){
 	triBase(T, n, k);
 	t2 = clock();
 	delta = (double)(t2-t1)/CLOCKS_PER_SEC;
-	printf("le tableau, dans le meilleure des cas de la taille %d, a ete rempli en %f secondes :\n", n, delta);
+	printf("le tableau, dans le cas de la taille %d, a ete trié en %f secondes :\n", n, delta);
 	printf("appuyez sur entree pr continuer\n");
 	fflush(stdin);
 	getchar();
 }
-void remplirTableauPireDesCas(int **T, int n){
-	*T = malloc(sizeof(int) * n);
-	int i;
-	//* (*T)[0] = rand();
-	for(i=0; i<n; i++){
-		//*ci-contre, une facon de le remplir en utilisant rand, cette methode est extremement lente...
-		// do{
-		// 	(*T)[i] = rand();
-		// }while((*T)[i] > (*T)[i-1] );
-		(*T)[i] = n-i;
-	}
-}
-void remplirTableauMeilleurDesCas(int **T, int n){
-	*T = malloc(sizeof(int) * n);
-	int i;
-	//* (*T)[0] = rand();
-	for(i=0; i<n; i++){
-		//*ci-contre, une facon de le remplir en utilisant rand, cette methode est extremement lente...
-		// do{
-		// 	(*T)[i] = rand();
-		// }while((*T)[i] < (*T)[i-1] );
-		(*T)[i] = i;
-	}
-}
+
 // J'ai crée cette fonction pour tester le cas ou les valeurs sont aleatoires(pas demandé)
 void remplir(int **T, int n){
 	*T = malloc(sizeof(int) * n);
