@@ -3,6 +3,11 @@
 ############################################################################
 
 Structure : 
-tri a bulles : dossier contenant les fichiers de la question sur les tris a bulles
+-tri a bulles : dossier contenant les fichiers de la question sur les tris a bulles
 Le fichier triABUlles.h contient les prototypes des fonctions + la definition d'un type booléen
 Si vous souhaitez afficher le tableau a un certain moment, J'ai prévu une fonction afficher qui le fait pour vous, vous n'aurez qu'a l'utiliser la ou vous voullez..
+-tri gnome : rien a dire la dessus..
+-tri par distribution : Ma solution me parait bizar... on nous demande dans cette methode de trier des nombres au cours du tri.. ce qui veut dire qu'on doit utiliser une autre methode de tri dans celui-ci.. peut-etre que j'ai mal compris
+-tri rapide : L'algorithme qu'elle nous a donné contient des erreurs, j'ai du utiliser une variante
+-tri par tas : rien a dire.
+
