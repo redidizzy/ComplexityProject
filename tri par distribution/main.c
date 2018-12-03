@@ -9,10 +9,11 @@ int main(){
 	int *T;
 	int i;
 	int k = 0;
+	int n[100];
 	double delta;
 	clock_t t1, t2;
 	srand(time(0)); //random number generator seeding
-	/* L'algorithme ne marche pas pour les valeurs qu'elle nous a donnes, c'est a dire : 
+	// L'algorithme ne marche pas pour les valeurs qu'elle nous a donnes, c'est a dire : 
 	n[0] = 5000;
 	n[1] = 100000;
 	n[2] = 200000;
@@ -26,24 +27,26 @@ int main(){
 	n[10] = 51200000;
 	n[11] = 102400000;
 	n[12] = 204800000;
-	j'ai donc utilisé une seule valeur pour cette question*/
-	int n = 100;
-	printf("----------------------------------------------------------------------\n");
-	printf("pour N = %d\n", n);
-	printf("-----------------------------------------------------------------------\n");
-	// Le meilleur des cas consiste en un tableau deja triéé
-	printf("remplissage du tableau..\n");
-	remplir(&T, n);
-	k = plusGrandNbChiffre(T, n);
-	printf("tri par distribution en cours...\n");
-	t1 = clock();
-	triBase(T, n, k);
-	t2 = clock();
-	delta = (double)(t2-t1)/CLOCKS_PER_SEC;
-	printf("le tableau, dans le cas de la taille %d, a ete trié en %f secondes :\n", n, delta);
-	printf("appuyez sur entree pr continuer\n");
-	fflush(stdin);
-	getchar();
+	//j'ai donc utilisé une seule valeur pour cette question*/
+	//int n = 100;
+	for(i = 0; i<13; i++){
+		printf("----------------------------------------------------------------------\n");
+		printf("pour N = %d\n", n[i]);
+		printf("-----------------------------------------------------------------------\n");
+		// Le meilleur des cas consiste en un tableau deja triéé
+		printf("remplissage du tableau..\n");
+		remplir(&T, n[i]);
+		k = plusGrandNbChiffre(T, n[i]);
+		printf("tri par distribution en cours...\n");
+		t1 = clock();
+		triBase(T, n[i], k);
+		t2 = clock();
+		delta = (double)(t2-t1)/CLOCKS_PER_SEC;
+		printf("le tableau, dans le cas de la taille %d, a ete trié en %f secondes :\n", n[i], delta);
+		printf("appuyez sur entree pr continuer\n");
+		fflush(stdin);
+		getchar();
+	}
 }
 
 // J'ai crée cette fonction pour tester le cas ou les valeurs sont aleatoires(pas demandé)
@@ -72,15 +75,32 @@ int cle(int x, int i){
 }
 void triAux(int *T, int n, int i){
 	int j = 0;
-	while(j < n-1){
-		if(cle(T[j], i) > cle(T[j+1], i)){
-			permutter(&T[j], &T[j+1]);
-			if(j - 1 >= 0) j--;
-			else j++;
-		}else{
-			j++;
-		}
+	int l = 0;
+	int t;
+	int tab[10];
+	for(j = 0; j<10; j++){
+		tab[j] = 0;
 	}
+
+	int *tabaux = malloc(n*sizeof(int));
+
+	for(j=0;j<n;j++){
+		tab[cle(T[j], i)]++;
+	}
+	for(j=1; j<10;j++){
+		tab[j] = tab[j] + tab[j-1];
+	}
+	for(j=n-1; j>=0; j--){
+		t = cle(T[j], i);
+		tabaux[tab[t] - 1] = T[j];
+		tab[t] = tab[t] - 1;
+	}
+
+	for(j= 0; j<n; j++){
+		T[j] = tabaux[j];
+	}
+
+	free(tabaux);
 }
 void triBase(int *T, int n, int k){
 	// La question n'est pas claire sur le role du k, je vais donc supposer qu'il s'agit du nombre de chiffre de l'element le plus grand
